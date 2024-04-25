@@ -37,10 +37,6 @@ task deploy
 
 ---
 
-![image](https://github.com/J0hn-B/hera_argo/assets/40946247/ab9fccb2-1c73-43da-a16f-4409457ff521)
-
----
-
 ## How to use
 
 ```bash
@@ -55,6 +51,10 @@ cd $PWD/src/mlops && poetry install
 ```
 
 - Check the `src/mlops/main.py` file and `src/mlops/mlops` folder for the example workflows.
+
+---
+
+![image](https://github.com/J0hn-B/hera_argo/assets/40946247/498e4916-88ff-4a12-a343-9075f76ac080)
 
 ---
 
