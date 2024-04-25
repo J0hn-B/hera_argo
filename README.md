@@ -2,7 +2,7 @@
 
 Hera is a Python framework for constructing and submitting Argo Workflows.
 
-This a tool for Machine Learning engineers to experiment,develop and orchestrate their workflows locally using `Python` and `Argo Workflows`
+This is a tool for Machine Learning engineers to experiment,develop and orchestrate their workflows locally using `Python` and `Argo Workflows`
 
 ## Prerequisites
 
