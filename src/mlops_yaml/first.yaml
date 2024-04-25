@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: container-
+  namespace: default
+spec:
+  entrypoint: cowsay
+  templates:
+    - container:
+        command:
+          - cowsay
+          - foo
+        image: docker/whalesay
+      name: cowsay

@@ -1,0 +1,8 @@
+---
+# Resources to apply
+resources:
+  ###?  dir contains config files for a service account with custom permissions. Uncomment to apply/adjust/modify based on your needs.
+  #- ../../base
+
+  ###? file contains a role binding for the default service account in the argo namespace with admin permissions. NOT recommended for production use.
+  - default_admin.yaml

@@ -1,0 +1,31 @@
+## https://doc.traefik.io/traefik/routing/providers/kubernetes-crd/#configuration-examples
+
+## Access the Argo UI at: http://localhost:8082/argo
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: argo-ingressroute
+  namespace: argo
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: PathPrefix(`/argo`)
+      kind: Rule
+      services:
+        - name: argo-server
+          port: 2746
+      middlewares:
+        - name: argo-stripprefix
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: argo-stripprefix
+  namespace: argo
+spec:
+  stripPrefix:
+    prefixes:
+      - /argo
+    forceSlash: true

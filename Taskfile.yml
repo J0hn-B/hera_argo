@@ -1,0 +1,50 @@
+## #  Description: Taskfile for k3d cluster
+
+version: "3"
+
+env:
+  CLUSTER_NAME: kubepal
+
+tasks:
+  ######  Main Task ######
+  deploy:
+    desc: Deploy workflows
+    cmds:
+      - task: argo
+      - task: ui
+
+  ######  Tasks ######
+
+  # K3d
+  create:
+    desc: Create a k3d cluster.
+    cmds:
+      - source  ./kubernetes/cluster/scripts/k3d.sh && create
+    silent: true
+
+  delete:
+    desc: Delete the k3d cluster.
+    cmds:
+      - source  ./kubernetes/cluster/scripts/k3d.sh && delete
+
+  # Argo Workflows
+  argo:
+    desc: Install Argo in the k3d cluster
+    dir: ./kubernetes/cluster/scripts/
+    cmds:
+      - task: create # Create a k3d cluster if not exists
+      - source ./argo_workflows.sh && argo_install
+    silent: true
+
+  ui: # Open Argo UI
+    desc: Get Argo and Minio UI
+    dir: ./kubernetes/cluster/scripts/
+    cmds:
+      - source ./argo_workflows.sh && argo_ui
+    silent: true
+
+  # Nix
+  clean:
+    desc: Clean up nix packages
+    cmds:
+      - nix-collect-garbage

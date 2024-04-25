@@ -1,0 +1,16 @@
+resources:
+  - namespace.yaml
+  - https://github.com/argoproj/argo-workflows/releases/download/v3.5.5/install.yaml
+  #- ingress.yaml
+
+patches:
+  - path: argo_server_patch.yaml
+    target:
+      kind: Deployment
+      name: argo-server
+      namespace: argo
+
+namespace: argo
+# PID=$(nohup kubectl port-forward svc/argo-server 2746:2746 --namespace=argo > /dev/null 2>&1 &)
+
+# kill -9 $PID
